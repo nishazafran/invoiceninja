@@ -27,15 +27,11 @@ jobs:
           --health-retries=10
 
     steps:
-      # -----------------------
       # 1. Checkout the code
-      # -----------------------
       - name: Checkout Code
         uses: actions/checkout@v3
 
-      # -----------------------
       # 2. Setup PHP
-      # -----------------------
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
@@ -43,9 +39,7 @@ jobs:
           extensions: mbstring, intl, mysql, bcmath, gd, zip
           coverage: none
 
-      # -----------------------
-      # 3. Composer install (with cache)
-      # -----------------------
+      # 3. Composer dependencies
       - name: Setup Composer Cache
         uses: actions/cache@v3
         with:
@@ -55,9 +49,7 @@ jobs:
       - name: Install PHP Dependencies
         run: composer install --no-interaction --prefer-dist
 
-      # -----------------------
-      # 4. Setup Node (frontend build)
-      # -----------------------
+      # 4. Node setup and build
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
@@ -70,18 +62,14 @@ jobs:
       - name: Build Frontend
         run: npm run production
 
-      # -----------------------
       # 5. Configure .env
-      # -----------------------
       - name: Copy .env
         run: cp .env.example .env
 
       - name: Set Laravel App Key
         run: php artisan key:generate
 
-      # -----------------------
       # 6. Wait for MySQL
-      # -----------------------
       - name: Wait for MySQL
         run: |
           for i in {1..20}; do
@@ -93,9 +81,7 @@ jobs:
             sleep 3
           done
 
-      # -----------------------
       # 7. Run migrations (fresh + seed)
-      # -----------------------
       - name: Run Migrations
         env:
           DB_CONNECTION: mysql
@@ -106,9 +92,7 @@ jobs:
           DB_DATABASE: invoiceninja_test
         run: php artisan migrate:fresh --seed --force
 
-      # -----------------------
-      # 8. Run all tests
-      # -----------------------
+      # 8. Run all tests (skip external services)
       - name: Run Tests
         env:
           DB_CONNECTION: mysql
@@ -117,6 +101,4 @@ jobs:
           DB_USERNAME: ninja
           DB_PASSWORD: ninja
           DB_DATABASE: invoiceninja_test
-        run: |
-          # Skip external-service tests to avoid failures
-          php artisan test --exclude-group=external
+        run: php artisan test --exclude-group=external
