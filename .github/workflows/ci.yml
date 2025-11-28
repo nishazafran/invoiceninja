@@ -2,9 +2,9 @@ name: Invoice Ninja CI
 
 on:
   push:
-    branches: [ develop ]
+    branches: [ v5-stable ]
   pull_request:
-    branches: [ develop ]
+    branches: [ v5-stable ]
 
 jobs:
   build:
