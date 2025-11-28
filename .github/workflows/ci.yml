@@ -92,7 +92,7 @@ jobs:
           DB_DATABASE: invoiceninja_test
         run: php artisan migrate:fresh --seed --force
 
-      # 8. Run all tests, skipping external services
+      # 8. Run all tests, skipping external/payment tests
       - name: Run Tests
         env:
           DB_CONNECTION: mysql
