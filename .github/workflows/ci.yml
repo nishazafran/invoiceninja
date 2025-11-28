@@ -71,7 +71,7 @@ jobs:
         run: npm run production
 
       # -----------------------
-      # 5. Create .env for testing
+      # 5. Configure .env
       # -----------------------
       - name: Copy .env
         run: cp .env.example .env
@@ -94,7 +94,7 @@ jobs:
           done
 
       # -----------------------
-      # 7. Run migrations
+      # 7. Run migrations (fresh + seed)
       # -----------------------
       - name: Run Migrations
         env:
@@ -104,10 +104,10 @@ jobs:
           DB_USERNAME: ninja
           DB_PASSWORD: ninja
           DB_DATABASE: invoiceninja_test
-        run: php artisan migrate --force
+        run: php artisan migrate:fresh --seed --force
 
       # -----------------------
-      # 8. Run PHPUnit tests
+      # 8. Run all tests
       # -----------------------
       - name: Run Tests
         env:
@@ -117,4 +117,4 @@ jobs:
           DB_USERNAME: ninja
           DB_PASSWORD: ninja
           DB_DATABASE: invoiceninja_test
-        run: php artisan test --testsuite=Unit --testsuite=Feature
+        run: php artisan test
