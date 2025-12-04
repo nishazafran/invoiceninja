@@ -16,14 +16,17 @@ pipeline {
         timestamps()
     }
 
-    stages {
+    stage('Checkout Code') {
+    steps {
+        checkout([$class: 'GitSCM',
+                  branches: [[name: '*/v5-stable']],
+                  userRemoteConfigs: [[
+                      url: 'https://github.com/invoiceninja/invoiceninja.git'
+                  ]]
+        ])
+    }
+}
 
-        stage('Checkout Code') {
-            steps {
-                // Checkout the v5-stable branch
-                git branch: 'v5-stable', url: 'https://github.com/invoiceninja/invoiceninja.git'
-            }
-        }
 
         stage('Setup PHP & Composer') {
             steps {
