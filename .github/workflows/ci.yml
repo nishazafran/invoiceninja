@@ -1,4 +1,4 @@
-name: Invoice Ninja CI
+name: Invoice Ninja CI/CD
 
 on:
   push:
@@ -7,24 +7,8 @@ on:
     branches: [ v5-stable ]
 
 jobs:
-  build:
+  build-and-deploy:
     runs-on: ubuntu-latest
-
-    services:
-      mysql:
-        image: mysql:8
-        env:
-          MYSQL_DATABASE: invoiceninja_test
-          MYSQL_USER: ninja
-          MYSQL_PASSWORD: ninja
-          MYSQL_ROOT_PASSWORD: root
-        ports:
-          - 3306:3306
-        options: >-
-          --health-cmd="mysqladmin ping --silent"
-          --health-interval=5s
-          --health-timeout=2s
-          --health-retries=10
 
     steps:
       # 1. Checkout the code
@@ -36,72 +20,53 @@ jobs:
         uses: shivammathur/setup-php@v2
         with:
           php-version: '8.2'
-          extensions: mbstring, intl, mysql, bcmath, gd, zip
+          extensions: mbstring, intl, bcmath, gd, zip
           coverage: none
 
-      # 3. Composer install (with cache)
-      - name: Setup Composer Cache
-        uses: actions/cache@v3
-        with:
-          path: vendor
-          key: composer-${{ runner.os }}-${{ hashFiles('composer.lock') }}
-
+      # 3. Install PHP dependencies
       - name: Install PHP Dependencies
         run: composer install --no-interaction --prefer-dist
 
-      # 4. Setup Node.js and build frontend
+      # 4. Setup Node.js
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
           node-version: '18'
           cache: 'npm'
 
+      # 5. Install Node dependencies
       - name: Install Node Dependencies
         run: npm ci
 
+      # 6. Build frontend production
       - name: Build Frontend
         run: npm run production
 
-      # 5. Configure .env for CI/testing
-      - name: Configure Environment
-        run: |
-          cp .env.example .env
-          php artisan key:generate
-          # Force APP_ENV to testing to avoid production prompt
-          php -r "file_put_contents('.env', str_replace('APP_ENV=production', 'APP_ENV=testing', file_get_contents('.env')));"
+      # 7. Run backend tests (PHPUnit)
+      - name: Run PHPUnit Tests
+        run: ./vendor/bin/phpunit --coverage-text
 
-      # 6. Wait for MySQL
-      - name: Wait for MySQL
-        run: |
-          for i in {1..20}; do
-            if mysqladmin ping -h 127.0.0.1 --silent; then
-              echo "MySQL is ready!"
-              break
-            fi
-            echo "Waiting for MySQL..."
-            sleep 3
-          done
+      # 8. Build Docker image
+      - name: Build Docker Image
+        run: docker build -t invoiceninja:latest .
 
-      # 7. Run migrations (fresh + seed)
-      - name: Run Migrations
+      # 9. Push Docker image to Docker Hub
+      - name: Push Docker Image
         env:
-          DB_CONNECTION: mysql
-          DB_HOST: 127.0.0.1
-          DB_PORT: 3306
-          DB_USERNAME: ninja
-          DB_PASSWORD: ninja
-          DB_DATABASE: invoiceninja_test
-          APP_ENV: testing   # Ensure Laravel knows this is testing
-        run: php artisan migrate:fresh --seed --force
+          DOCKER_USER: ${{ secrets.DOCKER_USERNAME }}
+          DOCKER_PASS: ${{ secrets.DOCKER_PASSWORD }}
+        run: |
+          echo $DOCKER_PASS | docker login -u $DOCKER_USER --password-stdin
+          docker tag invoiceninja:latest $DOCKER_USER/invoiceninja:latest
+          docker push $DOCKER_USER/invoiceninja:latest
 
-      # 8. Run all tests, ignore failing ones
-      - name: Run Tests
-        env:
-          DB_CONNECTION: mysql
-          DB_HOST: 127.0.0.1
-          DB_PORT: 3306
-          DB_USERNAME: ninja
-          DB_PASSWORD: ninja
-          DB_DATABASE: invoiceninja_test
-          APP_ENV: testing
-        run: php artisan test --exclude-group=external || true
+      # 10. Save artifacts (optional)
+      - name: Save Artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: docker-image-artifacts
+          path: |
+            ./Dockerfile
+            ./vendor
+            ./node_modules
+
