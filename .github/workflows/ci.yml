@@ -62,12 +62,13 @@ jobs:
       - name: Build Frontend
         run: npm run production
 
-      # 5. Configure .env
-      - name: Copy .env
-        run: cp .env.example .env
-
-      - name: Set Laravel App Key
-        run: php artisan key:generate
+      # 5. Configure .env for CI/testing
+      - name: Configure Environment
+        run: |
+          cp .env.example .env
+          php artisan key:generate
+          # Force APP_ENV to testing to avoid production prompt
+          php -r "file_put_contents('.env', str_replace('APP_ENV=production', 'APP_ENV=testing', file_get_contents('.env')));"
 
       # 6. Wait for MySQL
       - name: Wait for MySQL
@@ -90,8 +91,8 @@ jobs:
           DB_USERNAME: ninja
           DB_PASSWORD: ninja
           DB_DATABASE: invoiceninja_test
-        run: php artisan migrate:fresh --seed --env=testing --force
-
+          APP_ENV: testing   # Ensure Laravel knows this is testing
+        run: php artisan migrate:fresh --seed --force
 
       # 8. Run all tests, ignore failing ones
       - name: Run Tests
@@ -102,6 +103,5 @@ jobs:
           DB_USERNAME: ninja
           DB_PASSWORD: ninja
           DB_DATABASE: invoiceninja_test
-        run: |
-            php artisan test --exclude-group=external || true
-
+          APP_ENV: testing
+        run: php artisan test --exclude-group=external || true
