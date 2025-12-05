@@ -90,7 +90,8 @@ jobs:
           DB_USERNAME: ninja
           DB_PASSWORD: ninja
           DB_DATABASE: invoiceninja_test
-        run: php artisan migrate:fresh --seed --force
+        run: php artisan migrate:fresh --seed --env=testing --force
+
 
       # 8. Run all tests, ignore failing ones
       - name: Run Tests
