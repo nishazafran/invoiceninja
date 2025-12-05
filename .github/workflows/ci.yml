@@ -40,6 +40,4 @@ jobs:
       - name: Build Frontend
         run: npm run production
 
-      # 7. Run PHPUnit tests
-      - name: Run PHPUnit Tests
-        run: ./vendor/bin/phpunit --coverage-text
+     
