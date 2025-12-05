@@ -1,72 +1,82 @@
-name: Invoice Ninja CI/CD
-
-on:
-  push:
-    branches: [ v5-stable ]
-  pull_request:
-    branches: [ v5-stable ]
+version: 2.1
 
 jobs:
-  build-and-deploy:
-    runs-on: ubuntu-latest
-
+  build:
+    docker:
+      - image: cimg/php:8.2-node  # PHP + Node image
     steps:
-      # 1. Checkout the code
-      - name: Checkout Code
-        uses: actions/checkout@v3
+      - checkout
 
-      # 2. Setup PHP
-      - name: Setup PHP
-        uses: shivammathur/setup-php@v2
-        with:
-          php-version: '8.2'
-          extensions: mbstring, intl, bcmath, gd, zip
-          coverage: none
+      # 1. Update system and install Composer
+      - run:
+          name: Update System & Install Composer
+          command: |
+            sudo apt-get update
+            sudo apt-get install composer -y
 
-      # 3. Install PHP dependencies
-      - name: Install PHP Dependencies
-        run: composer install --no-interaction --prefer-dist
+      # 2. Install PHP dependencies
+      - run:
+          name: Install PHP Dependencies
+          command: composer install --no-interaction --prefer-dist --optimize-autoloader
 
-      # 4. Setup Node.js
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '18'
-          cache: 'npm'
+      # 3. Install Node dependencies
+      - run:
+          name: Install Node Dependencies
+          command: npm install
 
-      # 5. Install Node dependencies
-      - name: Install Node Dependencies
-        run: npm ci
+      # 4. Build frontend
+      - run:
+          name: Build Frontend
+          command: npm run production
 
-      # 6. Build frontend production
-      - name: Build Frontend
-        run: npm run production
+      # 5. Laravel build optimizations
+      - run:
+          name: Laravel Optimizations
+          command: |
+            php artisan optimize
+            php artisan config:cache
+            php artisan route:cache
 
-      # 7. Run backend tests (PHPUnit)
-      - name: Run PHPUnit Tests
-        run: ./vendor/bin/phpunit --coverage-text
+      # 6. Setup remote Docker for building images
+      - setup_remote_docker
 
-      # 8. Build Docker image
-      - name: Build Docker Image
-        run: docker build -t invoiceninja:latest .
+      # 7. Build Docker image
+      - run:
+          name: Build Docker Image
+          command: docker build -t invoiceninja-app:latest .
 
-      # 9. Push Docker image to Docker Hub
-      - name: Push Docker Image
-        env:
-          DOCKER_USER: ${{ secrets.DOCKER_USERNAME }}
-          DOCKER_PASS: ${{ secrets.DOCKER_PASSWORD }}
-        run: |
-          echo $DOCKER_PASS | docker login -u $DOCKER_USER --password-stdin
-          docker tag invoiceninja:latest $DOCKER_USER/invoiceninja:latest
-          docker push $DOCKER_USER/invoiceninja:latest
+      # 8. Save Docker image as artifact
+      - run:
+          name: Save Docker Image
+          command: docker save invoiceninja-app:latest -o invoiceninja-app.tar
 
-      # 10. Save artifacts (optional)
-      - name: Save Artifacts
-        uses: actions/upload-artifact@v3
-        with:
-          name: docker-image-artifacts
-          path: |
-            ./Dockerfile
-            ./vendor
-            ./node_modules
+      - store_artifacts:
+          path: invoiceninja-app.tar
+          destination: docker-image
 
+      # 9. Optional: save vendor and frontend build
+      - store_artifacts:
+          path: ./vendor
+          destination: php-vendor
+
+      - store_artifacts:
+          path: ./public/build
+          destination: frontend-build
+
+      # 10. Push Docker image to Docker Hub
+      - run:
+          name: Login to Docker Hub
+          command: echo $DOCKERHUB_PASSWORD | docker login -u $DOCKERHUB_USERNAME --password-stdin
+
+      - run:
+          name: Tag Docker Image
+          command: docker tag invoiceninja-app:latest $DOCKERHUB_USERNAME/invoiceninja:latest
+
+      - run:
+          name: Push Docker Image
+          command: docker push $DOCKERHUB_USERNAME/invoiceninja:latest
+
+workflows:
+  build-workflow:
+    jobs:
+      - build
