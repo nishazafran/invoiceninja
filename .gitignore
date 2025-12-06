@@ -41,3 +41,9 @@ _ide_helper.php
 /composer.phar
 .tx/
 .phpunit.cache
+
+#Ignore coverage reports
+coverage/
+coverage1/
+coverage2/
+
