@@ -76,7 +76,9 @@ jobs:
           name: Push Docker Image
           command: docker push $DOCKERHUB_USERNAME/invoiceninja:latest
 
-workflows:
-  build-workflow:
+build-and-test:
     jobs:
       - build
+      - test:
+          requires:
+            - build
