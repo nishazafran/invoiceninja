@@ -43,7 +43,9 @@
     <testsuite name="Integration">
       <directory suffix="Test.php">./tests/Integration</directory>
     </testsuite>
-
+    <testsuite name="Observers">
+      <directory suffix="Test.php">./tests/Observers</directory>
+    </testsuite>
   </testsuites>
 
   <source>
