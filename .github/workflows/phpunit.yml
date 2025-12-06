@@ -27,8 +27,8 @@ jobs:
       DB_USERNAME1: root
       DB_PASSWORD1: ninja
       DB_HOST1: '127.0.0.1'
-      DB_DATABASE: ninja
-      DB_USERNAME: root
+      DB_DATABASE: invoice_ninja
+      DB_USERNAME: lnuser
       DB_PASSWORD: ninja
       DB_HOST: '127.0.0.1'
       REDIS_PORT: 6379
@@ -136,4 +136,4 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: phpunit-coverage
-        path: Coverage.xml
+        path: coverage.xml
