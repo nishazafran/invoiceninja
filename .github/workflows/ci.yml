@@ -1,0 +1,43 @@
+name: Invoice Ninja CI
+
+on:
+  push:
+    branches: [ v5-stable ]
+  pull_request:
+    branches: [ v5-stable ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. Checkout code
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      # 2. Setup PHP
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'
+          extensions: mbstring, intl, bcmath, gd, zip
+
+      # 3. Install PHP dependencies
+      - name: Install PHP Dependencies
+        run: composer install --no-interaction --prefer-dist
+
+      # 4. Setup Node.js
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      # 5. Install Node dependencies
+      - name: Install Node Dependencies
+        run: npm install
+
+      # 6. Build frontend for production
+      - name: Build Frontend
+        run: npm run production
+
+     
