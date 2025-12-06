@@ -20,9 +20,7 @@ use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use App\Utils\Traits\Invoice\Broadcasting\DefaultResourceBroadcast;
 
-/**
- * Class DownloadAvailable.
- */
+
 class DownloadAvailable implements ShouldBroadcast
 {
     use SerializesModels;

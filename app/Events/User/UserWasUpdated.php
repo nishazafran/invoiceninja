@@ -19,9 +19,6 @@ use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
 
-/**
- * Class UserWasUpdated.
- */
 class UserWasUpdated
 {
     use Dispatchable;
@@ -53,7 +50,6 @@ class UserWasUpdated
 
     /**
      * Get the channels the event should broadcast on.
-     *
      * @return Channel|array
      */
     public function broadcastOn()

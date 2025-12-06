@@ -15,9 +15,6 @@ namespace App\Utils;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Http;
 
-/**
- * Class Ninja.
- */
 class Ninja
 {
     public const TEST_USERNAME = 'user@example.com';

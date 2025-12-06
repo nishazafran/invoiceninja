@@ -76,18 +76,5 @@ class NewAccountCreated extends Notification
         ];
     }
 
-    public function toSlack($notifiable)
-    {
-        $this->user->setCompany($this->company);
 
-        $user_name = $this->user->first_name.' '.$this->user->last_name;
-        $email = $this->user->email;
-        $ip = $this->user->ip;
-
-        return (new SlackMessage())
-                ->success()
-                ->from(ctrans('texts.notification_bot'))
-                ->image('https://app.invoiceninja.com/favicon.png')
-                ->content("A new account has been created by {$user_name} - {$email} - from IP: {$ip}");
-    }
 }

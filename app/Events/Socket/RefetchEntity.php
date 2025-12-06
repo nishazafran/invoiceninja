@@ -20,9 +20,7 @@ use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use App\Utils\Traits\Invoice\Broadcasting\DefaultResourceBroadcast;
 
-/**
- * Class RefetchEntity.
- */
+
 class RefetchEntity implements ShouldBroadcast
 {
     use SerializesModels;

@@ -16,16 +16,10 @@ use App\Models\Company;
 use App\Models\PurchaseOrder;
 use Illuminate\Queue\SerializesModels;
 
-/**
- * Class PurchaseOrderWasCreated.
- */
 class PurchaseOrderWasCreated
 {
     use SerializesModels;
 
-    /**
-     * @var PurchaseOrder
-     */
     public $purchase_order;
 
     public $company;

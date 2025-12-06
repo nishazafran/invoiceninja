@@ -16,20 +16,13 @@ use App\Models\Company;
 use App\Models\RecurringQuote;
 use Illuminate\Queue\SerializesModels;
 
-/**
- * Class RecurringQuoteWasCreated.
- */
+
 class RecurringQuoteWasCreated
 {
     use SerializesModels;
 
-    /**
-     * @var RecurringQuote
-     */
     public $recurring_quote;
-
     public $company;
-
     public $event_vars;
 
     /**

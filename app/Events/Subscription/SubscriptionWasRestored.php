@@ -16,22 +16,13 @@ use App\Models\Company;
 use App\Models\Subscription;
 use Illuminate\Queue\SerializesModels;
 
-/**
- * Class SubscriptionWasRestored.
- */
 class SubscriptionWasRestored
 {
     use SerializesModels;
 
-    /**
-     * @var Subscription
-     */
     public $subscription;
-
     public $company;
-
     public $event_vars;
-
     public $fromDeleted;
 
     /**

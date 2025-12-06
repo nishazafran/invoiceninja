@@ -49,7 +49,30 @@ class ZipDocuments implements ShouldQueue
 
     public $tries = 1;
 
-    /**
+    /**or');
+        $t->replace(Ninja::transformTranslations($this->company->settings));
+
+        // create new zip object
+        $zipFile = new \PhpZip\ZipFile();
+        $file_name = date('Y-m-d').'_'.str_replace(' ', '_', trans('texts.documents')).'.zip';
+        $path = $this->company->file_path();
+
+        try {
+            $documents = Document::query()->whereIn('id', $this->document_ids)->get();
+            $nmo->to_user = $this->user;
+            $nmo->settings = $this->settings;
+            $nmo->company = $this->company;
+
+            NinjaMailerJob::dispatch($nmo);
+
+            UnlinkFile::dispatch(config('filesystems.default'), $path.$file_name)->delay(now()->addHours(1));
+        } catch (\PhpZip\Exception\ZipException $e) {
+            nlog('could not make zip => '.$e->getMessage());
+        } finally {
+            $zipFile->close();
+        }
+    }
+
      * @param array $document_ids
      * @param Company $company
      * @param User $user
@@ -67,68 +90,4 @@ class ZipDocuments implements ShouldQueue
         $this->settings = $company->settings;
     }
 
-    /**
-     * Execute the job.
-     *
-     * @return void
-     */
-    public function handle()
-    {
-        MultiDB::setDb($this->company->db);
-
-        App::setLocale($this->company->locale());
-        App::forgetInstance('translator');
-        $t = app('translator');
-        $t->replace(Ninja::transformTranslations($this->company->settings));
-
-        // create new zip object
-        $zipFile = new \PhpZip\ZipFile();
-        $file_name = date('Y-m-d').'_'.str_replace(' ', '_', trans('texts.documents')).'.zip';
-        $path = $this->company->file_path();
-
-        try {
-            $documents = Document::query()->whereIn('id', $this->document_ids)->get();
-
-            foreach ($documents as $document) {
-                $zipFile->addFromString($this->buildFileName($document), $document->getFile());
-            }
-
-            Storage::put($path.$file_name, $zipFile->outputAsString());
-
-            $nmo = new NinjaMailerObject();
-            $nmo->mailable = new DownloadDocuments(Storage::url($path.$file_name), $this->company);
-            $nmo->to_user = $this->user;
-            $nmo->settings = $this->settings;
-            $nmo->company = $this->company;
-
-            NinjaMailerJob::dispatch($nmo);
-
-            UnlinkFile::dispatch(config('filesystems.default'), $path.$file_name)->delay(now()->addHours(1));
-        } catch (\PhpZip\Exception\ZipException $e) {
-            nlog('could not make zip => '.$e->getMessage());
-        } finally {
-            $zipFile->close();
-        }
-    }
-
-    private function buildFileName($document): string
-    {
-        $filename = $document->name;
-
-        $date = $this->formatDate(Carbon::createFromTimestamp($document->created_at), 'Y-m-d');
-
-        $number = '_';
-
-        if (isset($document->documentable->number)) {
-            $number = '_'.$document->documentable->number;
-        }
-
-        $entity = ctrans('texts.document');
-
-        if (isset($document->documentable)) {
-            $entity = $document->documentable->translate_entity();
-        }
-
-        return "{$date}_{$entity}{$number}_{$filename}";
-    }
 }

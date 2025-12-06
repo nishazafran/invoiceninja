@@ -16,9 +16,7 @@ use App\Models\Company;
 use App\Models\RecurringQuote;
 use Illuminate\Queue\SerializesModels;
 
-/**
- * Class RecurringQuoteWasDeleted.
- */
+
 class RecurringQuoteWasDeleted
 {
     use SerializesModels;

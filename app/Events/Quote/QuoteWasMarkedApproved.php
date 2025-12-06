@@ -16,9 +16,6 @@ use App\Models\Company;
 use App\Models\Quote;
 use Illuminate\Queue\SerializesModels;
 
-/**
- * Class InvoiceWasMarkedSent.
- */
 class QuoteWasMarkedApproved
 {
     use SerializesModels;

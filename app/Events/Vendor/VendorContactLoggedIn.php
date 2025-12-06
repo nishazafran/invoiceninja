@@ -19,26 +19,19 @@ use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
 
-/**
- * Class VendorContactLoggedIn.
- */
 class VendorContactLoggedIn
 {
     use Dispatchable;
     use InteractsWithSockets;
     use SerializesModels;
 
-    /**
-     * Create a new event instance.
-     *
-     */
+    //Create a new event instance.
     public function __construct(public VendorContact $contact, public Company $company, public array $event_vars)
     {
     }
 
-    /**
+    /*
      * Get the channels the event should broadcast on.
-     *
      * @return Channel|array
      */
     public function broadcastOn()

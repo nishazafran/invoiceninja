@@ -16,9 +16,6 @@ use App\Models\Company;
 use App\Models\QuoteInvitation;
 use Illuminate\Queue\SerializesModels;
 
-/**
- * Class QuoteReminderWasEmailed.
- */
 class QuoteReminderWasEmailed
 {
     use SerializesModels;

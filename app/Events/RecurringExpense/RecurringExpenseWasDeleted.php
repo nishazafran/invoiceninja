@@ -16,20 +16,12 @@ use App\Models\Company;
 use App\Models\RecurringExpense;
 use Illuminate\Queue\SerializesModels;
 
-/**
- * Class RecurringExpenseWasDeleted.
- */
 class RecurringExpenseWasDeleted
 {
     use SerializesModels;
 
-    /**
-     * @var RecurringExpense
-     */
     public $recurring_expense;
-
     public $company;
-
     public $event_vars;
 
     /**

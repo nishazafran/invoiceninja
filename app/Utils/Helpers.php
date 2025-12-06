@@ -25,6 +25,7 @@ class Helpers
 
     public static function sharedEmailVariables(?Client $client, array $settings = null): array
     {
+
         if (! $client) {
             $elements['signature'] = '';
             $elements['settings'] = new stdClass();

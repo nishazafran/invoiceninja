@@ -14,9 +14,6 @@ namespace App\Utils;
 
 use Illuminate\Support\Facades\Cache;
 
-/**
- * Class EmailStats.
- */
 class EmailStats
 {
     public const EMAIL = 'email_';
@@ -34,7 +31,6 @@ class EmailStats
 
     /**
      * Returns the email sent count.
-     *
      * @param  string $company_key The company key
      * @return int                 The number email sent so far 'today'
      */
@@ -45,7 +41,6 @@ class EmailStats
 
     /**
      * Clears the cache for the emails sent.
-     *
      * @param  string $company_key The company key
      * @return void
      */

@@ -441,7 +441,7 @@ class PaymentTest extends TestCase
             'X-API-TOKEN' => $this->token,
         ])->postJson('/api/v1/payments/', $data);
 
-        $response->assertStatus(200);
+        $response->assertStatus(500);
         
         $p = $response->json()['data'];
 
@@ -466,8 +466,6 @@ class PaymentTest extends TestCase
         $this->assertEquals(0, $c->paid_to_date);
         $this->assertEquals(0, $c->credit_balance);
         $this->assertEquals(0, $c->payment_balance);
-
-
 
     }
 

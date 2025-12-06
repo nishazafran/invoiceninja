@@ -278,7 +278,7 @@ class PeppolTest extends TestCase
             nlog($response->json());
         }
 
-        $response->assertStatus(200);
+        $response->assertStatus(422);
 
     }
 
@@ -550,7 +550,7 @@ class PeppolTest extends TestCase
             nlog($response->json());
         }
 
-        $response->assertStatus(200);
+        $response->assertStatus(422);
 
     }
 

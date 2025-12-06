@@ -16,20 +16,13 @@ use App\Models\Company;
 use App\Models\Vendor;
 use Illuminate\Queue\SerializesModels;
 
-/**
- * Class VendorWasUpdated.
- */
+
 class VendorWasUpdated
 {
     use SerializesModels;
 
-    /**
-     * @var Vendor
-     */
     public $vendor;
-
     public $company;
-
     public $event_vars;
 
     /**

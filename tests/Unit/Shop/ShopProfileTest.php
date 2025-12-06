@@ -97,7 +97,7 @@ class ShopProfileTest extends TestCase
 
         $arr = $response->json();
 
-        $this->assertEquals("Product", $arr['data']['settings']['product']);
+        $this->assertEquals("Produk", $arr['data']['settings']['product']);
         $this->assertEquals("Products", $arr['data']['settings']['products']);
         $this->assertIsArray($arr['data']['settings']['client_registration_fields']);
 

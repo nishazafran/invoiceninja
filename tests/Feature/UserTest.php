@@ -230,7 +230,7 @@ class UserTest extends TestCase
         $user->language_id = "13";
         $user->save();
 
-        $this->assertEquals("fr_CA", $user->getLocale());
+        $this->assertEquals('fr_CA', $user->getLocale());
 
         $response = $this->withHeaders([
             'X-API-SECRET' => config('ninja.api_secret'),

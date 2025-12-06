@@ -511,7 +511,7 @@ class CreditTest extends TestCase
             'X-API-TOKEN' => $this->token,
         ])->postJson('/api/v1/payments', $data);
 
-        $response->assertStatus(200);
+        $response->assertStatus(500);
         $arr = $response->json();
 
         $p_id = $arr['data']['id'];

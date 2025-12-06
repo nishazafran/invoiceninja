@@ -79,7 +79,7 @@ class UpdateTaxData implements ShouldQueue
 
     }
 
-    private function getBillingAddress(): array
+    public function getBillingAddress(): array
     {
 
         return [
@@ -93,7 +93,7 @@ class UpdateTaxData implements ShouldQueue
 
     }
 
-    private function getShippingAddress(): array
+    public function getShippingAddress(): array
     {
         if (strlen($this->client->shipping_address1 ?? '') < 3) {
             return $this->getBillingAddress();

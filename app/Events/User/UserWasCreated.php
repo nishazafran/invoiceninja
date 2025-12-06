@@ -19,9 +19,7 @@ use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
 
-/**
- * Class UserWasCreated.
- */
+
 class UserWasCreated
 {
     use Dispatchable;

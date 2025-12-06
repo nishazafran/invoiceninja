@@ -120,7 +120,7 @@ class VendorApiTest extends TestCase
             'company_id' => $c->id
         ]);
 
-        $this->assertEquals('it', $v->locale());
+        $this->assertEquals('af_ZA', $v->locale());
     }
 
     public function testVendorGetFilter()

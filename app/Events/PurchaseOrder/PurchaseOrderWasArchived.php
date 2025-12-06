@@ -16,20 +16,12 @@ use App\Models\Company;
 use App\Models\PurchaseOrder;
 use Illuminate\Queue\SerializesModels;
 
-/**
- * Class PurchaseOrderWasArchived.
- */
 class PurchaseOrderWasArchived
 {
     use SerializesModels;
 
-    /**
-     * @var PurchaseOrder
-     */
     public $purchase_order;
-
     public $company;
-
     public $event_vars;
 
     /**

@@ -19,9 +19,6 @@ use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
 
-/**
- * Class UserLoginFailed.
- */
 class UserLoginFailed
 {
     use Dispatchable;
@@ -34,7 +31,6 @@ class UserLoginFailed
 
     /**
      * Get the channels the event should broadcast on.
-     *
      * @return Channel|array
      */
     public function broadcastOn()

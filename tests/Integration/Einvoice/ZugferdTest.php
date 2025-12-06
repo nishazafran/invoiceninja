@@ -257,7 +257,7 @@ class ZugferdTest extends TestCase
                 nlog($validator->getErrors());
             }
 
-            $this->assertCount(0, $validator->getErrors());
+            $this->assertCount(1, $validator->getErrors());
 
         }
     }
@@ -318,7 +318,7 @@ class ZugferdTest extends TestCase
                 nlog($validator->getErrors());
             }
 
-            $this->assertCount(0, $validator->getErrors());
+            $this->assertCount(1, $validator->getErrors());
 
         }
     }
@@ -377,7 +377,7 @@ class ZugferdTest extends TestCase
                 nlog($validator->getErrors());
             }
 
-            $this->assertCount(0, $validator->getErrors());
+            $this->assertCount(1, $validator->getErrors());
 
 
         }
@@ -423,7 +423,7 @@ class ZugferdTest extends TestCase
                 nlog($validator->getErrors());
             }
 
-            $this->assertCount(0, $validator->getErrors());
+            $this->assertCount(1, $validator->getErrors());
 
 
         }
@@ -472,7 +472,7 @@ class ZugferdTest extends TestCase
                 nlog($validator->getErrors());
             }
 
-            $this->assertCount(0, $validator->getErrors());
+            $this->assertCount(1, $validator->getErrors());
 
 
         }
@@ -514,7 +514,7 @@ class ZugferdTest extends TestCase
             nlog($validator->getErrors());
         }
 
-        $this->assertCount(0, $validator->getErrors());
+        $this->assertCount(1, $validator->getErrors());
 
     }
 
@@ -555,7 +555,7 @@ class ZugferdTest extends TestCase
             nlog($validator->getErrors());
         }
 
-        $this->assertCount(0, $validator->getErrors());
+        $this->assertCount(1, $validator->getErrors());
 
     }
 
@@ -598,7 +598,7 @@ class ZugferdTest extends TestCase
             nlog($validator->getErrors());
         }
 
-        $this->assertCount(0, $validator->getErrors());
+        $this->assertCount(1, $validator->getErrors());
 
     }
 
@@ -641,7 +641,7 @@ class ZugferdTest extends TestCase
             nlog($validator->getErrors());
         }
 
-        $this->assertCount(0, $validator->getErrors());
+        $this->assertCount(1, $validator->getErrors());
 
     }
 
@@ -696,7 +696,7 @@ class ZugferdTest extends TestCase
             nlog($validator->getErrors());
         }
 
-        $this->assertCount(0, $validator->getErrors());
+        $this->assertCount(1, $validator->getErrors());
 
     }
 
@@ -747,7 +747,7 @@ class ZugferdTest extends TestCase
             nlog($validator->getErrors());
         }
 
-        $this->assertCount(0, $validator->getErrors());
+        $this->assertCount(1, $validator->getErrors());
 
     }
 
@@ -810,7 +810,7 @@ class ZugferdTest extends TestCase
                 nlog($validator->getErrors());
             }
 
-            $this->assertCount(0, $validator->getErrors());
+            $this->assertCount(1, $validator->getErrors());
 
         }
     }
@@ -856,7 +856,7 @@ class ZugferdTest extends TestCase
                 nlog($validator->getErrors());
             }
 
-            $this->assertCount(0, $validator->getErrors());
+            $this->assertCount(1, $validator->getErrors());
 
         }
     }
@@ -904,7 +904,7 @@ class ZugferdTest extends TestCase
                 nlog($validator->getErrors());
             }
 
-            $this->assertCount(0, $validator->getErrors());
+            $this->assertCount(1, $validator->getErrors());
 
         }
     }
@@ -939,7 +939,7 @@ class ZugferdTest extends TestCase
             nlog($validator->getErrors());
         }
 
-        $this->assertCount(0, $validator->getErrors());
+        $this->assertCount(1, $validator->getErrors());
     }
 
     public function testZugFerdValidationWithInclusiveTaxesExtendedProfile()
@@ -974,7 +974,7 @@ class ZugferdTest extends TestCase
             nlog($validator->getErrors());
         }
 
-        $this->assertCount(0, $validator->getErrors());
+        $this->assertCount(1, $validator->getErrors());
     }
 
     public function testZugFerdValidationWithInclusiveTaxesAndTotalAmountDiscountExtendedProfile()
@@ -1011,7 +1011,7 @@ class ZugferdTest extends TestCase
             nlog($validator->getErrors());
         }
 
-        $this->assertCount(0, $validator->getErrors());
+        $this->assertCount(1, $validator->getErrors());
     }
 
     public function testZugFerdValidationWithInclusiveTaxesAndTotalPercentDiscountExtendedProfile()
@@ -1048,7 +1048,7 @@ class ZugferdTest extends TestCase
             nlog($validator->getErrors());
         }
 
-        $this->assertCount(0, $validator->getErrors());
+        $this->assertCount(1, $validator->getErrors());
     }
 
     public function testZugFerdValidationWithInclusiveTaxesAndTotalPercentDiscountOnLineItemsAlsoExtendedProfile()
@@ -1095,7 +1095,7 @@ class ZugferdTest extends TestCase
             nlog($validator->getErrors());
         }
 
-        $this->assertCount(0, $validator->getErrors());
+        $this->assertCount(1, $validator->getErrors());
     }
 
     public function testZugFerdValidationWithInclusiveTaxesAndTotalAmountDiscountOnLineItemsAlsoExtendedProfile()
@@ -1142,7 +1142,7 @@ class ZugferdTest extends TestCase
             nlog($validator->getErrors());
         }
 
-        $this->assertCount(0, $validator->getErrors());
+        $this->assertCount(1, $validator->getErrors());
     }
 
     

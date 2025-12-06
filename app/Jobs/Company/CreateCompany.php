@@ -97,7 +97,7 @@ class CreateCompany
      *
      * @return string
      */
-    private function resolveCountry(): string
+    public function resolveCountry(): string
     {
         try {
 
@@ -133,7 +133,7 @@ class CreateCompany
 
     }
 
-    private function newZealandSetup($company): Company
+    public function newZealandSetup($company): Company
     {
 
         $company->enabled_tax_rates = 1;
@@ -149,7 +149,7 @@ class CreateCompany
         return $company;
     }
 
-    private function spanishSetup(Company $company): Company
+    public function spanishSetup(Company $company): Company
     {
         try {
 
@@ -185,7 +185,7 @@ class CreateCompany
 
     }
 
-    private function southAfticaSetup(Company $company): Company
+    public function southAfticaSetup(Company $company): Company
     {
 
         try {
@@ -220,7 +220,7 @@ class CreateCompany
 
     }
 
-    private function australiaSetup(Company $company): Company
+    public function australiaSetup(Company $company): Company
     {
         try {
 

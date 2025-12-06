@@ -4,25 +4,56 @@
   bootstrap="vendor/autoload.php" 
   colors="true" 
   processIsolation="true" 
-  stopOnError="true" 
-  stopOnFailure="true" 
+  stopOnError="false" 
+  stopOnFailure="false" 
   xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/11.0/phpunit.xsd"
   cacheDirectory=".phpunit.cache" 
   backupStaticProperties="false">
   <testsuites>
-    <testsuite name="Unit">
-      <directory suffix="Test.php">./tests/Unit</directory>
-    </testsuite>
-    <testsuite name="Integration">
-      <directory suffix="Test.php">./tests/Integration</directory>
-    </testsuite>
     <testsuite name="Feature">
       <directory suffix="Test.php">./tests/Feature</directory>
     </testsuite>
     <testsuite name="Pdf">
       <directory suffix="Test.php">./tests/Pdf</directory>
     </testsuite>
+    <testsuite name="DataProviders">
+      <directory suffix="Test.php">./tests/DataProviders</directory>
+    </testsuite>
+    <testsuite name="Elastic">
+      <directory suffix="Test.php">./tests/Elastic</directory>
+    </testsuite>
+    <testsuite name="Notifications">
+      <directory suffix="Test.php">./tests/Notifications</directory>
+    </testsuite>
+    <testsuite name="Events">
+      <directory suffix="Test.php">./tests/Events</directory>
+    </testsuite>
+    <testsuite name="Utils">
+      <directory suffix="Test.php">./tests/Utils</directory>
+    </testsuite>
+    <testsuite name="Policies">
+      <directory suffix="Test.php">./tests/Policies</directory>
+    </testsuite>
+    <testsuite name="Jobs">
+      <directory suffix="Test.php">./tests/Jobs</directory>
+    </testsuite>
+    <testsuite name="Unit">
+      <directory suffix="Test.php">./tests/Unit</directory>
+    </testsuite>
+    <testsuite name="Integration">
+      <directory suffix="Test.php">./tests/Integration</directory>
+    </testsuite>
+
   </testsuites>
+
+  <source>
+    <include>
+        <directory suffix=".php">./app</directory>
+    </include>
+    <exclude>
+        <directory>tests</directory>
+    </exclude>
+  </source>
   <php>
     <env name="APP_ENV" value="testing"/>
     <env name="BCRYPT_ROUNDS" value="4"/>
@@ -30,8 +61,12 @@
     <env name="SESSION_DRIVER" value="array"/>
     <env name="QUEUE_CONNECTION" value="sync"/>
     <env name="MAIL_MAILER" value="array"/>
-    <env name="DB_CONNECTION" value="sqlite"/>
-    <env name="DB_DATABASE" value=":memory:"/>
+    <env name="DB_CONNECTION" value="mysql"/>
+    <env name="DB_HOST" value="127.0.0.1"/>
+    <env name="DB_PORT" value="3306"/>
+    <env name="DB_DATABASE" value="invoice_ninja"/>
+    <env name="DB_USERNAME" value="lnuser"/>
+    <env name="DB_PASSWORD" value="ninja"/>
     <env name="DB_STRICT" value="false"/>
     <env name="SCOUT_DRIVER" value="null"/>
   </php>

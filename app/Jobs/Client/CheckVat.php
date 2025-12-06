@@ -44,19 +44,6 @@ class CheckVat implements ShouldQueue
     {
     }
 
-    /**
-     * Execute the job.
-     *
-     */
-    public function handle()
-    {
-        MultiDB::setDb($this->company->db);
-
-        $tax_service = new TaxService($this->client);
-        $tax_service->validateVat();
-
-    }
-
     public function middleware()
     {
         return [(new WithoutOverlapping($this->client->client_hash))->releaseAfter(60)->expireAfter(60)];

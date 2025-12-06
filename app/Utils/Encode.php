@@ -20,7 +20,8 @@ class Encode
      */
     public static function convert(string $contents): string
     {
- 
+ return $contents ?: '';
+
         // Check for different UTF BOMs and handle accordingly
         $bomResult = self::detectAndHandleUTFEncoding($contents);
         if ($bomResult !== null) {
@@ -79,7 +80,9 @@ class Encode
         }
 
         // Fallback: return original contents
-        return $contents ?: '';
+
+	return $contents ?: '';
+
     }
 
     /**

@@ -15,9 +15,6 @@ namespace App\Utils;
 use App\Models\Company;
 use App\Models\Currency;
 
-/**
- * Class Number.
- */
 class Number
 {
     /**

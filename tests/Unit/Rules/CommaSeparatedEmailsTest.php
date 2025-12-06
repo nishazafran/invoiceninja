@@ -108,4 +108,61 @@ class CommaSeparatedEmailsTest extends TestCase
         
         $this->assertFalse($failed);
     }
+    
+    public function test_fails_when_no_valid_email_after_split()
+    {
+        $rule = new CommaSeparatedEmails();
+        $failed = false;
+        $errorMessage = '';
+
+        $rule->validate('emails', ', , ,', function($msg) use (&$failed, &$errorMessage) {
+            $failed = true;
+            $errorMessage = $msg;
+        });
+
+        $this->assertTrue($failed);
+        $this->assertStringContainsString('must contain at least one valid email', $errorMessage);
+    }
+
+    public function test_uses_first_separator_from_custom_separators()
+    {
+        $rule = new CommaSeparatedEmails(10, [';', ',']);
+        $failed = false;
+
+        $rule->validate('emails', 'a@a.com; b@b.com', function() use (&$failed) {
+            $failed = true;
+        });
+
+        $this->assertFalse($failed);
+    }
+
+    public function test_message_method_output()
+    {
+        $rule = new CommaSeparatedEmails();
+        $this->assertEquals(
+            'The :attribute must contain valid email addresses separated by commas.',
+            $rule->message()
+        );
+    }
+
+    public function test_parse_emails_static_method()
+    {
+        $result = CommaSeparatedEmails::parseEmails(" a@a.com , b@b.com ,, ");
+        $this->assertEquals(['a@a.com', 'b@b.com'], $result);
+    }
+
+    public function test_parse_emails_returns_empty_array_for_empty_string()
+    {
+        $this->assertEquals([], CommaSeparatedEmails::parseEmails(""));
+    }
+
+    public function test_is_valid_email_returns_true()
+    {
+        $this->assertTrue(CommaSeparatedEmails::isValidEmail("valid@example.com"));
+    }
+
+    public function test_is_valid_email_returns_false()
+    {
+        $this->assertFalse(CommaSeparatedEmails::isValidEmail("invalid-email"));
+    }
 }

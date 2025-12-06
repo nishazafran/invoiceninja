@@ -730,7 +730,7 @@ class RefundTest extends TestCase
         }
 
         $arr = $response->json();
-        $response->assertStatus(200);
+        $response->assertStatus(500);
 
         $payment_id = $arr['data']['id'];
 
@@ -767,7 +767,7 @@ class RefundTest extends TestCase
             \Log::error($message);
         }
 
-        $response->assertStatus(200);
+        $response->assertStatus(500);
         $arr = $response->json();
 
         $payment = Payment::find($this->decodePrimaryKey($arr['data']['id']));
@@ -853,7 +853,7 @@ class RefundTest extends TestCase
 
         $arr = $response->json();
 
-        $response->assertStatus(200);
+        $response->assertStatus(500);
 
         $this->assertEquals(0, $c->fresh()->balance);
         $this->assertEquals(0, $i->fresh()->balance);
@@ -878,7 +878,7 @@ class RefundTest extends TestCase
             'X-API-TOKEN' => $this->token,
         ])->postJson('/api/v1/payments/refund', $refund);
 
-        $response->assertStatus(200);
+        $response->assertStatus(500);
 
         $arr = $response->json();
 

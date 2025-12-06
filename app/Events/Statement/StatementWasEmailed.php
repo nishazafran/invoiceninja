@@ -18,9 +18,7 @@ use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
 
-/**
- * Class StatementWasEmailed.
- */
+
 class StatementWasEmailed
 {
     use Dispatchable;

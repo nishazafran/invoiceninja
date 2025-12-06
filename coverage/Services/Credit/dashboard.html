@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>Dashboard for /home/user/Desktop/FAST/SQE/Project/invoiceninja/app/Services/Credit</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="../../_css/bootstrap.min.css?v=11.0.11" rel="stylesheet" type="text/css">
+  <link href="../../_css/nv.d3.min.css?v=11.0.11" rel="stylesheet" type="text/css">
+  <link href="../../_css/style.css?v=11.0.11" rel="stylesheet" type="text/css">
+  <link href="../../_css/custom.css" rel="stylesheet" type="text/css">
+ </head>
+ <body>
+  <header>
+   <div class="container-fluid">
+    <div class="row">
+     <div class="col-md-12">
+      <nav aria-label="breadcrumb">
+       <ol class="breadcrumb">
+         <li class="breadcrumb-item"><a href="../../index.html">/home/user/Desktop/FAST/SQE/Project/invoiceninja/app</a></li>
+         <li class="breadcrumb-item"><a href="../index.html">Services</a></li>
+         <li class="breadcrumb-item"><a href="index.html">Credit</a></li>
+         <li class="breadcrumb-item active">(Dashboard)</li>
+
+       </ol>
+      </nav>
+     </div>
+    </div>
+   </div>
+  </header>
+  <div class="container-fluid">
+   <div class="row">
+    <div class="col-md-12">
+     <h2>Classes</h2>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3>Coverage Distribution</h3>
+     <div id="classCoverageDistribution" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3>Complexity</h3>
+     <div id="classComplexity" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3>Insufficient Coverage</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Class</th>
+         <th class="text-right">Coverage</th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="ApplyPayment.php.html#23">App\Services\Credit\ApplyPayment</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="SendEmail.php.html#22">App\Services\Credit\SendEmail</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="TriggeredActions.php.html#24">App\Services\Credit\TriggeredActions</a></td><td class="text-right">31%</td></tr>
+       <tr><td><a href="CreateInvitations.php.html#23">App\Services\Credit\CreateInvitations</a></td><td class="text-right">42%</td></tr>
+       <tr><td><a href="CreditService.php.html#27">App\Services\Credit\CreditService</a></td><td class="text-right">46%</td></tr>
+       <tr><td><a href="ApplyNumber.php.html#21">App\Services\Credit\ApplyNumber</a></td><td class="text-right">60%</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3>Project Risks</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Class</th>
+         <th class="text-right"><abbr title="Change Risk Anti-Patterns (CRAP) Index">CRAP</abbr></th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="CreditService.php.html#27">App\Services\Credit\CreditService</a></td><td class="text-right">244</td></tr>
+       <tr><td><a href="ApplyPayment.php.html#23">App\Services\Credit\ApplyPayment</a></td><td class="text-right">156</td></tr>
+       <tr><td><a href="SendEmail.php.html#22">App\Services\Credit\SendEmail</a></td><td class="text-right">90</td></tr>
+       <tr><td><a href="TriggeredActions.php.html#24">App\Services\Credit\TriggeredActions</a></td><td class="text-right">78</td></tr>
+       <tr><td><a href="CreateInvitations.php.html#23">App\Services\Credit\CreateInvitations</a></td><td class="text-right">24</td></tr>
+       <tr><td><a href="ApplyNumber.php.html#21">App\Services\Credit\ApplyNumber</a></td><td class="text-right">15</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-12">
+     <h2>Methods</h2>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3>Coverage Distribution</h3>
+     <div id="methodCoverageDistribution" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3>Complexity</h3>
+     <div id="methodComplexity" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3>Insufficient Coverage</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Method</th>
+         <th class="text-right">Coverage</th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="ApplyPayment.php.html#35"><abbr title="App\Services\Credit\ApplyPayment::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ApplyPayment.php.html#44"><abbr title="App\Services\Credit\ApplyPayment::run">run</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ApplyPayment.php.html#88"><abbr title="App\Services\Credit\ApplyPayment::applyPaymentToCredit">applyPaymentToCredit</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ApplyPayment.php.html#106"><abbr title="App\Services\Credit\ApplyPayment::addPaymentToLedger">addPaymentToLedger</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="CreateInvitations.php.html#93"><abbr title="App\Services\Credit\CreateInvitations::createBlankContact">createBlankContact</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="CreditService.php.html#48"><abbr title="App\Services\Credit\CreditService::getECredit">getECredit</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="CreditService.php.html#53"><abbr title="App\Services\Credit\CreditService::getEDocument">getEDocument</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="CreditService.php.html#83"><abbr title="App\Services\Credit\CreditService::sendEmail">sendEmail</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="CreditService.php.html#112"><abbr title="App\Services\Credit\CreditService::markPaid">markPaid</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="CreditService.php.html#169"><abbr title="App\Services\Credit\CreditService::applyPayment">applyPayment</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="CreditService.php.html#227"><abbr title="App\Services\Credit\CreditService::deletePdf">deletePdf</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="CreditService.php.html#232"><abbr title="App\Services\Credit\CreditService::deleteECredit">deleteECredit</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="SendEmail.php.html#30"><abbr title="App\Services\Credit\SendEmail::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="SendEmail.php.html#42"><abbr title="App\Services\Credit\SendEmail::run">run</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="TriggeredActions.php.html#73"><abbr title="App\Services\Credit\TriggeredActions::sendEmail">sendEmail</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="TriggeredActions.php.html#39"><abbr title="App\Services\Credit\TriggeredActions::run">run</abbr></a></td><td class="text-right">35%</td></tr>
+       <tr><td><a href="CreateInvitations.php.html#34"><abbr title="App\Services\Credit\CreateInvitations::run">run</abbr></a></td><td class="text-right">46%</td></tr>
+       <tr><td><a href="ApplyNumber.php.html#61"><abbr title="App\Services\Credit\ApplyNumber::trySaving">trySaving</abbr></a></td><td class="text-right">55%</td></tr>
+       <tr><td><a href="ApplyNumber.php.html#38"><abbr title="App\Services\Credit\ApplyNumber::run">run</abbr></a></td><td class="text-right">58%</td></tr>
+       <tr><td><a href="CreditService.php.html#199"><abbr title="App\Services\Credit\CreditService::fillDefaults">fillDefaults</abbr></a></td><td class="text-right">58%</td></tr>
+       <tr><td><a href="CreditService.php.html#90"><abbr title="App\Services\Credit\CreditService::setCalculatedStatus">setCalculatedStatus</abbr></a></td><td class="text-right">71%</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3>Project Risks</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Method</th>
+         <th class="text-right"><abbr title="Change Risk Anti-Patterns (CRAP) Index">CRAP</abbr></th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="SendEmail.php.html#42"><abbr title="App\Services\Credit\SendEmail::run">run</abbr></a></td><td class="text-right">72</td></tr>
+       <tr><td><a href="TriggeredActions.php.html#39"><abbr title="App\Services\Credit\TriggeredActions::run">run</abbr></a></td><td class="text-right">44</td></tr>
+       <tr><td><a href="ApplyPayment.php.html#44"><abbr title="App\Services\Credit\ApplyPayment::run">run</abbr></a></td><td class="text-right">42</td></tr>
+       <tr><td><a href="ApplyPayment.php.html#106"><abbr title="App\Services\Credit\ApplyPayment::addPaymentToLedger">addPaymentToLedger</abbr></a></td><td class="text-right">20</td></tr>
+       <tr><td><a href="CreateInvitations.php.html#34"><abbr title="App\Services\Credit\CreateInvitations::run">run</abbr></a></td><td class="text-right">14</td></tr>
+       <tr><td><a href="CreditService.php.html#232"><abbr title="App\Services\Credit\CreditService::deleteECredit">deleteECredit</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="CreditService.php.html#199"><abbr title="App\Services\Credit\CreditService::fillDefaults">fillDefaults</abbr></a></td><td class="text-right">10</td></tr>
+       <tr><td><a href="ApplyNumber.php.html#38"><abbr title="App\Services\Credit\ApplyNumber::run">run</abbr></a></td><td class="text-right">8</td></tr>
+       <tr><td><a href="CreditService.php.html#112"><abbr title="App\Services\Credit\CreditService::markPaid">markPaid</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="TriggeredActions.php.html#73"><abbr title="App\Services\Credit\TriggeredActions::sendEmail">sendEmail</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="CreditService.php.html#90"><abbr title="App\Services\Credit\CreditService::setCalculatedStatus">setCalculatedStatus</abbr></a></td><td class="text-right">4</td></tr>
+       <tr><td><a href="ApplyNumber.php.html#61"><abbr title="App\Services\Credit\ApplyNumber::trySaving">trySaving</abbr></a></td><td class="text-right">3</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+   </div>
+   <footer>
+    <hr/>
+    <p>
+     <small>Generated by <a href="https://github.com/sebastianbergmann/php-code-coverage" target="_top">php-code-coverage 11.0.11</a> using <a href="https://www.php.net/" target="_top">PHP 8.2.29</a> and <a href="https://phpunit.de/">PHPUnit 11.5.35</a> at Fri Dec 5 21:14:38 UTC 2025.</small>
+    </p>
+   </footer>
+  </div>
+  <script src="../../_js/jquery.min.js?v=11.0.11" type="text/javascript"></script>
+  <script src="../../_js/d3.min.js?v=11.0.11" type="text/javascript"></script>
+  <script src="../../_js/nv.d3.min.js?v=11.0.11" type="text/javascript"></script>
+  <script type="text/javascript">
+$(document).ready(function() {
+  nv.addGraph(function() {
+    var chart = nv.models.multiBarChart();
+    chart.tooltips(false)
+      .showControls(false)
+      .showLegend(false)
+      .reduceXTicks(false)
+      .staggerLabels(true)
+      .yAxis.tickFormat(d3.format('d'));
+
+    d3.select('#classCoverageDistribution svg')
+      .datum(getCoverageDistributionData([2,0,0,0,1,2,0,1,0,0,0,2], "Class Coverage"))
+      .transition().duration(500).call(chart);
+
+    nv.utils.windowResize(chart.update);
+
+    return chart;
+  });
+
+  nv.addGraph(function() {
+    var chart = nv.models.multiBarChart();
+    chart.tooltips(false)
+      .showControls(false)
+      .showLegend(false)
+      .reduceXTicks(false)
+      .staggerLabels(true)
+      .yAxis.tickFormat(d3.format('d'));
+
+    d3.select('#methodCoverageDistribution svg')
+      .datum(getCoverageDistributionData([15,0,0,0,1,1,3,0,1,0,0,21], "Method Coverage"))
+      .transition().duration(500).call(chart);
+
+    nv.utils.windowResize(chart.update);
+
+    return chart;
+  });
+
+  function getCoverageDistributionData(data, label) {
+    var labels = [
+      '0%',
+      '0-10%',
+      '10-20%',
+      '20-30%',
+      '30-40%',
+      '40-50%',
+      '50-60%',
+      '60-70%',
+      '70-80%',
+      '80-90%',
+      '90-100%',
+      '100%'
+    ];
+    var values = [];
+    $.each(labels, function(key) {
+      values.push({x: labels[key], y: data[key]});
+    });
+
+    return [
+      {
+        key: label,
+        values: values,
+        color: "#4572A7"
+      }
+    ];
+  }
+  nv.addGraph(function() {
+    var chart = nv.models.scatterChart()
+      .showDistX(true)
+      .showDistY(true)
+      .showLegend(false)
+      .forceX([0, 100]);
+    chart.tooltipContent(function(graph) {
+      return '<p>' + graph.point.class + '</p>';
+    });
+
+    chart.xAxis.axisLabel('Code Coverage (in percent)');
+    chart.yAxis.axisLabel('Cyclomatic Complexity');
+
+    d3.select('#classComplexity svg')
+      .datum(getComplexityData([[60.86956521739131,10,"<a href=\"ApplyNumber.php.html#21\">App\\Services\\Credit\\ApplyNumber<\/a>"],[0,12,"<a href=\"ApplyPayment.php.html#23\">App\\Services\\Credit\\ApplyPayment<\/a>"],[42.22222222222222,9,"<a href=\"CreateInvitations.php.html#23\">App\\Services\\Credit\\CreateInvitations<\/a>"],[46.666666666666664,37,"<a href=\"CreditService.php.html#27\">App\\Services\\Credit\\CreditService<\/a>"],[100,2,"<a href=\"GetCreditPdf.php.html#19\">App\\Services\\Credit\\GetCreditPdf<\/a>"],[100,5,"<a href=\"MarkSent.php.html#20\">App\\Services\\Credit\\MarkSent<\/a>"],[0,9,"<a href=\"SendEmail.php.html#22\">App\\Services\\Credit\\SendEmail<\/a>"],[31.03448275862069,14,"<a href=\"TriggeredActions.php.html#24\">App\\Services\\Credit\\TriggeredActions<\/a>"]], 'Class Complexity'))
+      .transition()
+      .duration(500)
+      .call(chart);
+
+    nv.utils.windowResize(chart.update);
+
+    return chart;
+  });
+
+  nv.addGraph(function() {
+    var chart = nv.models.scatterChart()
+      .showDistX(true)
+      .showDistY(true)
+      .showLegend(false)
+      .forceX([0, 100]);
+    chart.tooltipContent(function(graph) {
+      return '<p>' + graph.point.class + '</p>';
+    });
+
+    chart.xAxis.axisLabel('Code Coverage (in percent)');
+    chart.yAxis.axisLabel('Method Complexity');
+
+    d3.select('#methodComplexity svg')
+      .datum(getComplexityData([[100,1,"<a href=\"ApplyNumber.php.html#31\">App\\Services\\Credit\\ApplyNumber::__construct<\/a>"],[58.333333333333336,6,"<a href=\"ApplyNumber.php.html#38\">App\\Services\\Credit\\ApplyNumber::run<\/a>"],[55.55555555555556,3,"<a href=\"ApplyNumber.php.html#61\">App\\Services\\Credit\\ApplyNumber::trySaving<\/a>"],[0,1,"<a href=\"ApplyPayment.php.html#35\">App\\Services\\Credit\\ApplyPayment::__construct<\/a>"],[0,6,"<a href=\"ApplyPayment.php.html#44\">App\\Services\\Credit\\ApplyPayment::run<\/a>"],[0,1,"<a href=\"ApplyPayment.php.html#88\">App\\Services\\Credit\\ApplyPayment::applyPaymentToCredit<\/a>"],[0,4,"<a href=\"ApplyPayment.php.html#106\">App\\Services\\Credit\\ApplyPayment::addPaymentToLedger<\/a>"],[100,1,"<a href=\"CreateInvitations.php.html#29\">App\\Services\\Credit\\CreateInvitations::__construct<\/a>"],[46.15384615384615,7,"<a href=\"CreateInvitations.php.html#34\">App\\Services\\Credit\\CreateInvitations::run<\/a>"],[0,1,"<a href=\"CreateInvitations.php.html#93\">App\\Services\\Credit\\CreateInvitations::createBlankContact<\/a>"],[100,1,"<a href=\"CreditService.php.html#33\">App\\Services\\Credit\\CreditService::__construct<\/a>"],[100,1,"<a href=\"CreditService.php.html#38\">App\\Services\\Credit\\CreditService::location<\/a>"],[100,1,"<a href=\"CreditService.php.html#43\">App\\Services\\Credit\\CreditService::getCreditPdf<\/a>"],[0,1,"<a href=\"CreditService.php.html#48\">App\\Services\\Credit\\CreditService::getECredit<\/a>"],[0,1,"<a href=\"CreditService.php.html#53\">App\\Services\\Credit\\CreditService::getEDocument<\/a>"],[100,1,"<a href=\"CreditService.php.html#62\">App\\Services\\Credit\\CreditService::applyNumber<\/a>"],[100,1,"<a href=\"CreditService.php.html#69\">App\\Services\\Credit\\CreditService::createInvitations<\/a>"],[100,1,"<a href=\"CreditService.php.html#76\">App\\Services\\Credit\\CreditService::setStatus<\/a>"],[0,1,"<a href=\"CreditService.php.html#83\">App\\Services\\Credit\\CreditService::sendEmail<\/a>"],[71.42857142857143,4,"<a href=\"CreditService.php.html#90\">App\\Services\\Credit\\CreditService::setCalculatedStatus<\/a>"],[0,2,"<a href=\"CreditService.php.html#112\">App\\Services\\Credit\\CreditService::markPaid<\/a>"],[100,1,"<a href=\"CreditService.php.html#162\">App\\Services\\Credit\\CreditService::markSent<\/a>"],[0,1,"<a href=\"CreditService.php.html#169\">App\\Services\\Credit\\CreditService::applyPayment<\/a>"],[100,1,"<a href=\"CreditService.php.html#178\">App\\Services\\Credit\\CreditService::adjustBalance<\/a>"],[100,1,"<a href=\"CreditService.php.html#185\">App\\Services\\Credit\\CreditService::updatePaidToDate<\/a>"],[100,1,"<a href=\"CreditService.php.html#192\">App\\Services\\Credit\\CreditService::updateBalance<\/a>"],[58.333333333333336,7,"<a href=\"CreditService.php.html#199\">App\\Services\\Credit\\CreditService::fillDefaults<\/a>"],[0,1,"<a href=\"CreditService.php.html#227\">App\\Services\\Credit\\CreditService::deletePdf<\/a>"],[0,3,"<a href=\"CreditService.php.html#232\">App\\Services\\Credit\\CreditService::deleteECredit<\/a>"],[100,1,"<a href=\"CreditService.php.html#253\">App\\Services\\Credit\\CreditService::triggeredActions<\/a>"],[100,2,"<a href=\"CreditService.php.html#260\">App\\Services\\Credit\\CreditService::deleteCredit<\/a>"],[100,2,"<a href=\"CreditService.php.html#275\">App\\Services\\Credit\\CreditService::restoreCredit<\/a>"],[100,1,"<a href=\"CreditService.php.html#294\">App\\Services\\Credit\\CreditService::save<\/a>"],[100,1,"<a href=\"GetCreditPdf.php.html#21\">App\\Services\\Credit\\GetCreditPdf::__construct<\/a>"],[100,1,"<a href=\"GetCreditPdf.php.html#25\">App\\Services\\Credit\\GetCreditPdf::run<\/a>"],[100,1,"<a href=\"MarkSent.php.html#26\">App\\Services\\Credit\\MarkSent::__construct<\/a>"],[100,4,"<a href=\"MarkSent.php.html#32\">App\\Services\\Credit\\MarkSent::run<\/a>"],[0,1,"<a href=\"SendEmail.php.html#30\">App\\Services\\Credit\\SendEmail::__construct<\/a>"],[0,8,"<a href=\"SendEmail.php.html#42\">App\\Services\\Credit\\SendEmail::run<\/a>"],[100,1,"<a href=\"TriggeredActions.php.html#32\">App\\Services\\Credit\\TriggeredActions::__construct<\/a>"],[35,11,"<a href=\"TriggeredActions.php.html#39\">App\\Services\\Credit\\TriggeredActions::run<\/a>"],[0,2,"<a href=\"TriggeredActions.php.html#73\">App\\Services\\Credit\\TriggeredActions::sendEmail<\/a>"]], 'Method Complexity'))
+      .transition()
+      .duration(500)
+      .call(chart);
+
+    nv.utils.windowResize(chart.update);
+
+    return chart;
+  });
+
+  function getComplexityData(data, label) {
+    var values = [];
+    $.each(data, function(key) {
+      var value = Math.round(data[key][0]*100) / 100;
+      values.push({
+        x: value,
+        y: data[key][1],
+        class: data[key][2],
+        size: 0.05,
+        shape: 'diamond'
+      });
+    });
+
+    return [
+      {
+        key: label,
+        values: values,
+        color: "#4572A7"
+      }
+    ];
+  }
+});
+  </script>
+ </body>
+</html>

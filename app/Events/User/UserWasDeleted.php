@@ -19,9 +19,6 @@ use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
 
-/**
- * Class UserWasDeleted.
- */
 class UserWasDeleted
 {
     use Dispatchable;
@@ -29,11 +26,8 @@ class UserWasDeleted
     use SerializesModels;
 
     public $user;
-
     public $creating_user;
-
     public $company;
-
     public $event_vars;
 
     /**

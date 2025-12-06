@@ -16,9 +16,6 @@ use App\Models\Payment;
 use App\Models\User;
 use Tests\TestCase;
 
-/**
- * 
- */
 class ArrayFiltersTest extends TestCase
 {
     private string $import_version = '';

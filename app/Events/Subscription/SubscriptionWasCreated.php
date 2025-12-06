@@ -14,19 +14,8 @@ class SubscriptionWasCreated
     use InteractsWithSockets;
     use SerializesModels;
 
-    /**
-     * @var Subscription
-     */
     public $subscription;
-
-    /**
-     * @var Company
-     */
     public $company;
-
-    /**
-     * @var array
-     */
     public $event_vars;
 
     /**

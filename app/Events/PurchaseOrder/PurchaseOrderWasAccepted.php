@@ -17,22 +17,12 @@ use App\Models\PurchaseOrder;
 use App\Models\VendorContact;
 use Illuminate\Queue\SerializesModels;
 
-/**
- * Class PurchaseOrderWasAccepted.
- */
 class PurchaseOrderWasAccepted
 {
     use SerializesModels;
-
-    /**
-     * @var PurchaseOrder
-     */
     public $purchase_order;
-
     public $company;
-
     public $event_vars;
-
     public $contact;
 
     /**

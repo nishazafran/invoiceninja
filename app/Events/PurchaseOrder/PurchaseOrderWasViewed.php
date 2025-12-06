@@ -16,9 +16,7 @@ use App\Models\Company;
 use App\Models\PurchaseOrderInvitation;
 use Illuminate\Queue\SerializesModels;
 
-/**
- * Class PurchaseOrderWasViewed.
- */
+
 class PurchaseOrderWasViewed
 {
     use SerializesModels;

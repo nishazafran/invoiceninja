@@ -565,7 +565,7 @@ class BaseApiTest extends TestCase
               ->assertJson(
                   fn (AssertableJson $json) =>
                 $json->has('meta')
-                 ->has('data', 0)
+                 ->has('data', 1)
               );
         });
 

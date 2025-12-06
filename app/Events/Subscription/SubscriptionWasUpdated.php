@@ -16,20 +16,12 @@ use App\Models\Company;
 use App\Models\Subscription;
 use Illuminate\Queue\SerializesModels;
 
-/**
- * Class SubscriptionWasUpdated.
- */
 class SubscriptionWasUpdated
 {
     use SerializesModels;
 
-    /**
-     * @var Subscription
-     */
     public $subscription;
-
     public $company;
-
     public $event_vars;
 
     /**

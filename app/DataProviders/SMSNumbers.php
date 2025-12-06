@@ -93937,7 +93937,6 @@ class SMSNumbers
 
         // Sort the array
         sort($unique_numbers);
-
         return $unique_numbers;
     }
 
@@ -93953,20 +93952,13 @@ class SMSNumbers
     {
 
         $unique_numbers = self::uniqueNumbers();
-
         $output = "private static array \$temp_numbers = [\n";
-
         foreach ($unique_numbers as $number) {
             $output .= "    '" . $number . "',\n";
         }
 
         $output .= "];";
-
         echo $output;
 
     }
-
-
-
-
 }

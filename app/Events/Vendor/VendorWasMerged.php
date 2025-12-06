@@ -16,16 +16,12 @@ use App\Models\Vendor;
 use App\Models\Company;
 use Illuminate\Queue\SerializesModels;
 
-/**
- * Class ClientWasMerged.
- */
 class VendorWasMerged
 {
     use SerializesModels;
 
     /**
      * Create a new event instance.
-     *
      * @param string $mergeable_vendor
      * @param Vendor $vendor
      * @param Company $company
