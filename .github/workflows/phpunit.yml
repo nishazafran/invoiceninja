@@ -89,10 +89,6 @@ jobs:
         ref: v5-stable
         fetch-depth: 1
 
-    - name: Copy .env
-      run: |
-        cp .env.ci .env
-
     - name: Get Composer Cache Directory
       id: composer-cache
       run: |
@@ -122,13 +118,22 @@ jobs:
       run: |
         php artisan migrate && php artisan db:seed
   
-    - name: Run Testsuite
+    - name: Prepare environment
       run: |
-        cat .env
+        cp .env.ci .env
         vendor/bin/snappdf download
-        tests/ci
+
+    - name: Run PHPUnit tests with coverage
+      run: |
+        php artisan test --env=testing --coverage-clover=coverage.xml || true
       env:
-        DB_PORT: ${{ job.services.mysql.ports[3306] }}
+        DB_PORT: ${{ job.services.mariadb.ports[3306] }}
         PHP_CS_FIXER_IGNORE_ENV: true
         CI_NODE_TOTAL: ${{ matrix.ci_node_total }}
         CI_NODE_INDEX: ${{ matrix.ci_node_index }}
+
+    - name: Upload PHP coverage report
+      uses: actions/upload-artifact@v4
+      with:
+        name: phpunit-coverage
+        path: Coverage.xml
