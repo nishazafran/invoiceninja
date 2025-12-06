@@ -105,6 +105,11 @@ jobs:
         composer config -g github-oauth.github.com ${{ secrets.GITHUB_TOKEN }}
         composer install
 
+    - name: Prepare environment
+      run: |
+        cp .env.ci .env
+        vendor/bin/snappdf download
+
     - name: Prepare Laravel Application
       env:
         REDIS_PORT: ${{ job.services.redis.ports['6379'] }}
@@ -117,11 +122,6 @@ jobs:
     - name: Migrate Database
       run: |
         php artisan migrate && php artisan db:seed
-  
-    - name: Prepare environment
-      run: |
-        cp .env.ci .env
-        vendor/bin/snappdf download
 
     - name: Run PHPUnit tests with coverage
       run: |
