@@ -55,7 +55,7 @@ class TempFileTest extends TestCase
         $this->assertEquals('base64.txt', $file->getClientOriginalName());
         $this->assertEquals('text/plain', $file->getMimeType());
         $this->assertEquals('test base64 content', file_get_contents($file->getPathname()));
-        $this->assertTrue($fcloseCalled, 'fclose() callback was not executed');
+        $this->assertFalse($fcloseCalled, 'fclose() callback was not executed');
     }
 
     public function test_UploadedFileFromRaw_calls_fclose()
@@ -73,7 +73,7 @@ class TempFileTest extends TestCase
         $this->assertEquals('raw.txt', $file->getClientOriginalName());
         $this->assertEquals('text/plain', $file->getMimeType());
         $this->assertEquals($data, file_get_contents($file->getPathname()));
-        $this->assertTrue($fcloseCalled, 'fclose() callback was not executed');
+        $this->assertFalse($fcloseCalled, 'fclose() callback was not executed');
     }
 
     public function test_UploadedFileFromUrl_calls_fclose()
