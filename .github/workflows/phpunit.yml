@@ -91,7 +91,7 @@ jobs:
 
     - name: Copy .env
       run: |
-        cp .env.ci .env
+        cp .env.ci .env.testing
 
     - name: Get Composer Cache Directory
       id: composer-cache
