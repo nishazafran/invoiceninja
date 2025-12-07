@@ -93,13 +93,15 @@ jobs:
 
       - add_ssh_keys:
           fingerprints:
-            - "SHA256:B//ljIrB6AjD5JrNhkQ7lhoy4lRkEurPLKfBPugn4a0"
-            - "SHA256:YXbjILChgNMR1Awwa/evGEuGaO2nJ5tY+wJhVyYyi4E"
+            - "SHA256:<NEW_CIRCLECI_RSA_FINGERPRINT>"  # replace with your new fingerprint
 
       - run:
           name: Deploy to EC2 Staging
           command: |
-            echo "Deploying to staging server..."
+            echo "Starting deployment to staging..."
+
+            STAGING_USER=ubuntu
+            STAGING_HOST=13.223.193.94
 
             if ssh -o StrictHostKeyChecking=no -o ConnectTimeout=300 \
               "$STAGING_USER@$STAGING_HOST" "bash ~/deploy_staging.sh"; then
@@ -107,7 +109,7 @@ jobs:
             else
               echo "Deployment failed, but continuing pipeline..."
             fi
-            
+
             echo "Deployment step finished."
 
 workflows:
