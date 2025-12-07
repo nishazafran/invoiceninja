@@ -66,8 +66,8 @@
     <env name="DB_CONNECTION" value="mysql"/>
     <env name="DB_HOST" value="127.0.0.1"/>
     <env name="DB_PORT" value="3306"/>
-    <env name="DB_DATABASE" value="invoice_ninja"/>
-    <env name="DB_USERNAME" value="lnuser"/>
+    <env name="DB_DATABASE" value="ninja"/>
+    <env name="DB_USERNAME" value="ninja"/>
     <env name="DB_PASSWORD" value="ninja"/>
     <env name="DB_STRICT" value="false"/>
     <env name="SCOUT_DRIVER" value="null"/>
