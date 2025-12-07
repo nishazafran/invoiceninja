@@ -3,7 +3,8 @@ name: Deploy to Production
 on:
   push:
     branches:
-      - main  # Trigger deployment on pushes to main branch
+      - v5-stable  # Trigger deployment on pushes to v5-stable branch
+  workflow_dispatch:  # Allows manual trigger
 
 jobs:
   deploy:
@@ -35,7 +36,8 @@ jobs:
           key: ${{ secrets.PROD_SSH_KEY }}
           script: |
             # Navigate to project folder on server
-            cd /home/ubuntu/invoiceninja || mkdir -p /home/ubuntu/invoiceninja && cd /home/ubuntu/invoiceninja
+            mkdir -p /home/ubuntu/invoiceninja
+            cd /home/ubuntu/invoiceninja
 
             # Pull latest Docker image if exists
             docker pull invoiceninja:latest || true
@@ -49,7 +51,6 @@ jobs:
             # Clean up unused Docker resources
             docker system prune -f
 
-      # 5. Optional: notify deployment success (can integrate Sentry or Slack)
+      # 5. Optional: notify deployment success
       - name: Notify Deployment
-        run: |
-          echo "Deployment completed successfully!"
+        run: echo "Deployment completed successfully!"
