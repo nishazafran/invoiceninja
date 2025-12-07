@@ -1,4 +1,4 @@
-version: 2.1
+version: 2.2
 
 jobs:
   build:
@@ -75,10 +75,43 @@ jobs:
       - run:
           name: Push Docker Image
           command: docker push $DOCKERHUB_USERNAME/invoiceninja:latest
+  test:
+    docker:
+      - image: cimg/php:8.2-node
+    steps:
+      - checkout
+      - run:
+          name: Install PHP dependencies
+          command: composer install --no-interaction --prefer-dist
+      - run:
+          name: Run PHPUnit tests
+          command: vendor/bin/phpunit --coverage-text   
+  deploy-staging:
+    machine: true
+    steps:
+      - checkout
 
-build-and-test:
+      - add_ssh_keys:
+          fingerprints:
+            - "SHA256:B//ljIrB6AjD5JrNhkQ7lhoy4lRkEurPLKfBPugn4a0"
+
+      - run:u
+          name: Deploy to EC2 Staging
+          command: |
+            echo "Deploying to staging server..."
+            ssh -o StrictHostKeyChecking=no $STAGING_USER@$STAGING_HOST "bash ~/deploy_staging.sh"
+            echo "Deployment completed."
+
+workflows:
+  build-test-deploy:
     jobs:
       - build
       - test:
           requires:
             - build
+      - deploy-staging:
+          requires:
+            - test
+          filters:
+            branches:
+              only: v5-stable
