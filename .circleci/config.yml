@@ -95,7 +95,7 @@ jobs:
           fingerprints:
             - "SHA256:B//ljIrB6AjD5JrNhkQ7lhoy4lRkEurPLKfBPugn4a0"
 
-      - run:u
+      - run:
           name: Deploy to EC2 Staging
           command: |
             echo "Deploying to staging server..."
