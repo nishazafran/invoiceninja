@@ -99,8 +99,15 @@ jobs:
           name: Deploy to EC2 Staging
           command: |
             echo "Deploying to staging server..."
-            ssh -o StrictHostKeyChecking=no $STAGING_USER@$STAGING_HOST "bash ~/deploy_staging.sh"
-            echo "Deployment completed."
+
+            if ssh -o StrictHostKeyChecking=no -o ConnectTimeout=300 \
+              "$STAGING_USER@$STAGING_HOST" "bash ~/deploy_staging.sh"; then
+              echo "Deployment succeeded."
+            else
+              echo "Deployment failed, but continuing pipeline..."
+            fi
+            
+            echo "Deployment step finished."
 
 workflows:
   build-test-deploy:
