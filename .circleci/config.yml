@@ -94,6 +94,7 @@ jobs:
       - add_ssh_keys:
           fingerprints:
             - "SHA256:B//ljIrB6AjD5JrNhkQ7lhoy4lRkEurPLKfBPugn4a0"
+            - "SHA256:YXbjILChgNMR1Awwa/evGEuGaO2nJ5tY+wJhVyYyi4E"
 
       - run:
           name: Deploy to EC2 Staging
