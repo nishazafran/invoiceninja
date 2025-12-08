@@ -31,7 +31,7 @@ jobs:
       - name: Deploy to Production Server
         uses: appleboy/ssh-action@v0.1.9
         with:
-          host: 182.182.147.104
+          host: 13.223.193.94
           username: ubuntu
           key: ${{ secrets.PROD_SSH_KEY }}
           script: |
